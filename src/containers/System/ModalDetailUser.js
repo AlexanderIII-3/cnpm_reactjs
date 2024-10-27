@@ -59,8 +59,7 @@ class ModalDetailUser extends Component {
 
 
     render() {
-        console.log('check did prop mout', this.props.detailUser)
-        console.log('check state ,', this.state.phoneNumber)
+
         return (
 
             <Modal isOpen={this.props.isOpen} toggle={() => { this.toggle() }} className={'alexClassName'}>

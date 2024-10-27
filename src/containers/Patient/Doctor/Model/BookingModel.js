@@ -83,7 +83,7 @@ class BookingModel extends Component {
         this.setState({ selectedGender })
     };
     async componentDidMount() {
-        this.props.getGenderStart();
+        // this.props.getGenderStart();
 
 
     }
@@ -317,7 +317,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getGenderStart: () => dispatch(actions.fetchGenderStart()),
+        // getGenderStart: () => dispatch(actions.fetchGenderStart()),
 
     };
 };

@@ -19,13 +19,20 @@ const handleDeleteUserService = (InputId) => {
         }
     });
 };
+const handleDeleteDrink = (InputId) => {
+    return axios.delete('/api/delete-drink', {
+        data: {
+            id: InputId
+        }
+    });
+}
 const EditUserService = (user) => {
     console.log('check user form server', user)
-    return axios.put('/api/edit-user', user
+    return axios.put('/api/edit-user', user);
 
 
 
-    );
+
 };
 const getAllCodeService = (inPutData) => {
     return axios.get(`/api/allcodes?type=${inPutData}`)
@@ -42,9 +49,67 @@ const detailUserService = (userId) => {
 const getAllDoctor = () => {
     return axios.get(`/api/get-all-doctor`)
 }
-const postInforDoctor = (data) => {
-    return axios.post(`/api/save-infor-doctor`, data)
+const postInforDrink = (data) => {
+    return axios.post(`/api/save-drink`, data)
+
+
+
+
 }
+
+
+
+
+
+//after
+const getAllListDrinks = () => {
+    return axios.get('api/get-all-list-drinks')
+};
+const getAllListDrinkByType = (data) => {
+    console.log('check send user service', data)
+    return axios.post('/api/get-all-list-drinks-byDishID', { data })
+
+}
+const getDetailDrinkById = (data) => {
+    console.log('check send user service', data)
+    return axios.get(`/api/detail-drink?id=${data}`)
+};
+const handleAddToCart = (data) => {
+    return axios.post(`/api/handle-add-to-cart`, data)
+}
+const handleFecthCartPerCustomer = (data) => {
+    console.log('check send user service', data)
+
+    return axios.get(`/api/get-info-cart-by-Id?id=${data.id}&date=${data.date}`)
+
+};
+const handleDeleteOder = (id) => {
+    return axios.post(`/api/handle-delete-oder?id=${id}`)
+
+};
+
+const handleSaveBill = (data) => {
+    return axios.post(`/api/handle-save-bill`, data)
+
+};
+const handleGetAllBill = (data) => {
+    return axios.get(`/api/handle-get-all-bill?id=${data.id}&date=${data.date}`);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// before
 const getDetailInforDoctor = (id) => {
     return axios.get(`/api/get-details-doctor?id=${id}`)
 
@@ -72,59 +137,24 @@ const postVerifyBookingAppointment = (data) => {
 }
 
 
-const saveSpecialtyInfor = (data) => {
-    console.log('check data to send 2', data)
-    return axios.post('/api/specialty-save-infor', data)
-}
-const fetchSpecialtyInfor = () => {
-    return axios.get(`/api/fetch-specialty-infor`);
-
-}
-const handleDeleteSpecialy = (id) => {
-    return axios.post(`/api/handle-delete-specialty?id=${id}`)
-}
-const handleGetDetailSpecialtyById = (data) => {
-    return axios.get(`/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`)
-}
-const createNewClinic = (data) => {
-    return axios.post(`/api/create-new-clinic`, data)
-}
-const getAllClinic = () => {
-    return axios.get(`/api/get-all-clinic`)
-}
-const handleDeleteClinic = (data) => {
-    return axios.post(`/api/delete-clinic`, data)
-}
-const handleGetDetailClinicById = (data) => {
-    return axios.get(`/api/get-detail-clinic-by-id?id=${data.id}`)
-}
-const getAllPatientForDoctor = (data) => {
-    return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`)
-}
-const sendRemedy = (data) => {
-    return axios.post(`/api/sending-remedy`, data)
-}
-const handleCreateNewHandBook = (data) => {
-    return axios.post(`/api/create-new-handbook`, data)
-}
-const handleGetAllHandBook = () => {
-    return axios.get('/api/get-all-handbook')
-};
 
 
-const handleGetDetailHandBookById = (data) => {
-    return axios.get(`/api/get-detail-handbook?id=${data.id}`)
-};
 export {
     handleLoginApi, getAllUsers, deletUser, createNewUserService, handleDeleteUserService,
-    EditUserService, getAllCodeService, getTopDoctor, detailUserService, getAllDoctor, postInforDoctor,
+    EditUserService, getAllCodeService, getTopDoctor, detailUserService, getAllDoctor, postInforDrink,
     getDetailInforDoctor, bulkCreateSchedule,
     getScheduleDoctorByDate, getMoreInforDoctor,
     getProfileInforDoctor, postPatentAppointment,
-    saveSpecialtyInfor, fetchSpecialtyInfor,
-    handleDeleteSpecialy, postVerifyBookingAppointment,
-    handleGetDetailSpecialtyById, createNewClinic,
-    getAllClinic, handleDeleteClinic, handleGetDetailClinicById,
-    getAllPatientForDoctor, sendRemedy, handleCreateNewHandBook,
-    handleGetAllHandBook, handleGetDetailHandBookById
+
+    postVerifyBookingAppointment,
+
+
+
+
+    getAllListDrinks, handleDeleteDrink,
+    getAllListDrinkByType, getDetailDrinkById,
+    handleAddToCart, handleFecthCartPerCustomer,
+    handleDeleteOder, handleSaveBill,
+    handleGetAllBill
+
 }

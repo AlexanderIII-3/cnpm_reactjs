@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/UserRedux';
+import ManageListDrink from '../containers/System/Admin/ManageListDrink';
 import Header from '../containers/Header/Header';
 import ManageDoctor from '../containers/System/Admin/ManageDoctor';
-import ManageSpecity from '../containers/System/Specialty/ManageSpecity';
-import ManageClinic from '../containers/System/Clinic/ManageClinic';
-import ManageHandBook from '../containers/System/HandBook/ManageHandBook';
+import HomePage from '../containers/HomePage/HomePage';
+
 
 class System extends Component {
     render() {
@@ -20,12 +20,9 @@ class System extends Component {
                 <div className="system-container">
                     <div className="system-list">
                         <Switch>
-                            <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/user-redux" component={UserRedux} />
-                            <Route path="/system/manage-doctor" component={ManageDoctor} />
-                            <Route path="/system/manage-specialty" component={ManageSpecity} />
-                            <Route path="/system/manage-clinic" component={ManageClinic} />
-                            <Route path="/system/manage-handbook" component={ManageHandBook}></Route>
+                            <Route path="/system/manage-drinks" component={ManageListDrink}></Route>
+                            <Route path="/home" component={HomePage} ></Route>
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>

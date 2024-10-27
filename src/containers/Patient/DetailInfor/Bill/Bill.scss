@@ -1,0 +1,330 @@
+// // // @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// // body {
+// //     font-family: 'Space Mono', monospace;
+// //     display: flex;
+// //     flex-direction: column;
+// //     max-width: 520px;
+// //     padding: 32px;
+// //     margin: 60px auto;
+// //     border: 1px solid #eee;
+// //     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.06);
+// // }
+
+// // * {
+// //     // make it sexy
+// //     -webkit-font-smoothing: antialiased;
+// //     -moz-osx-font-smoothing: grayscale;
+// //     text-rendering: optimizelegibility;
+// //     letter-spacing: -0.25px;
+// // }
+
+// // ol {
+// //     padding-left: 50px;
+// // }
+
+// // li {
+// //     color: #4F4F4F;
+// //     padding-left: 16px;
+// //     margin-top: 24px;
+// //     position: relative;
+// //     font-size: 16px;
+// //     line-height: 20px;
+
+// //     &:before {
+// //         content: '';
+// //         display: block;
+// //         height: 42px;
+// //         width: 42px;
+// //         border-radius: 50%;
+// //         border: 2px solid #ddd;
+// //         position: absolute; // yeah, you have to manually position it based on the text size, line height, etc. (in the parent li style). it's not the smarest solution 
+// //         top: -12px;
+// //         left: -46px;
+// //     }
+// // }
+
+// // strong {
+// //     color: #292929;
+// // }
+
+// // ol.alternating-colors {
+// //     li:nth-child(odd):before {
+// //         border-color: #0BAD02;
+// //     }
+
+// //     li:nth-child(even):before {
+// //         border-color: #2378D5;
+// //     }
+// // }
+// .bill-container {
+//     background-color: #eee;
+//     padding-top: 10px;
+//     min-width: 450px;
+//     font-family: 'Space Mono', monospace;
+//     min-height: 550px;
+//     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.06);
+//     margin: 0 100px;
+//     display: flex;
+
+
+
+//     .content-left {
+//         width: 70%;
+
+//         .bill-header {
+//             padding-top: 40px;
+//             text-transform: uppercase;
+//             text-align: center;
+//         }
+
+//         .bill-body {
+//             padding-top: 40px;
+
+
+
+//             margin: 0 100px;
+
+//             ol {
+//                 border-radius: 50%;
+
+//             }
+
+//             li {
+
+//                 .infomation {
+//                     display: flex;
+//                     gap: 10px;
+//                 }
+//             }
+//         }
+
+//     }
+
+//     .content-right {
+//         margin-left: 10px;
+
+
+//         width: 30%;
+//         padding-top: 40px;
+
+//         .right-body {
+//             height: auto;
+
+//             .total-price {
+//                 height: 100px;
+
+//                 .price-child {
+//                     border-style: groove;
+//                     margin-top: 20px;
+//                     color: red;
+
+
+//                     .image-QR {
+//                         margin-top: 15px;
+//                         background: url('../../../../assets/logo1.jpg') !important;
+//                         height: 150px;
+//                         width: 150px;
+//                         background-position: center center !important;
+//                         background-repeat: no-repeat !important;
+//                         background-size: cover !important;
+//                         cursor: pointer;
+//                     }
+//                 }
+
+//                 .confirm-transfer {
+//                     // border-style: outset;
+//                     outline: none;
+//                     margin-top: 19px;
+
+//                     button {
+//                         height: 35px;
+//                         border-radius: 10%;
+//                         border: none !important;
+//                         background: red;
+//                         color: white;
+//                         outline: none !important;
+//                     }
+//                 }
+
+//                 .state {
+//                     color: green !important;
+//                 }
+
+//                 .address {
+//                     margin-top: 15px;
+//                     height: 50px;
+
+//                     .address-cus {
+//                         border-style: outset;
+//                     }
+//                 }
+
+
+
+
+
+
+//             }
+//         }
+//     }
+
+
+
+
+// }
+
+// Bill.scss
+
+$primary-color: #2378D5;
+$secondary-color: #0BAD02;
+$accent-color: #eee;
+$text-color: #4F4F4F;
+$highlight-color: #292929;
+$background-color: #fff;
+$shadow-color: rgba(0, 0, 0, 0.06);
+
+.bill-container {
+    background-color: $background-color;
+    min-width: 450px;
+    min-height: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 12px 24px $shadow-color;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Space Mono', monospace;
+
+    .content-left {
+        flex: 2;
+        padding: 20px;
+
+        .bill-header {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: $highlight-color;
+            padding-bottom: 20px;
+        }
+
+        .bill-body {
+            padding-top: 20px;
+
+            ol.alternating-colors {
+                padding-left: 20px;
+
+                li {
+                    color: $text-color;
+                    font-size: 16px;
+                    margin-top: 24px;
+                    padding-left: 16px;
+                    position: relative;
+
+                    &:before {
+                        content: '';
+                        display: block;
+                        height: 42px;
+                        width: 42px;
+                        border-radius: 50%;
+                        border: 2px solid $accent-color;
+                        position: absolute;
+                        top: -12px;
+                        left: -46px;
+                    }
+
+                    &:nth-child(odd):before {
+                        border-color: $secondary-color;
+                    }
+
+                    &:nth-child(even):before {
+                        border-color: $primary-color;
+                    }
+
+                    .infomation {
+                        display: flex;
+                        gap: 15px;
+                        flex-wrap: wrap;
+
+                        p {
+                            margin: 5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .content-right {
+        flex: 1;
+        padding: 20px;
+
+        .right-head {
+            font-weight: bold;
+            padding-bottom: 15px;
+            color: $highlight-color;
+        }
+
+        .right-body {
+            .total-price {
+                background-color: $accent-color;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+
+                .price-child {
+                    margin-top: 15px;
+                    color: red;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .image-QR {
+                        height: 150px;
+                        width: 150px;
+                        background: url('../../../../assets/logo1.jpg') center center / cover no-repeat;
+                        margin-top: 15px;
+                        cursor: pointer;
+                    }
+                }
+
+                .confirm-transfer {
+                    text-align: center;
+                    margin-top: 20px;
+
+                    button {
+                        height: 35px;
+                        padding: 0 20px;
+                        background: $primary-color;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background 0.3s;
+
+                        &:hover {
+                            background: darken($primary-color, 10%);
+                        }
+                    }
+                }
+
+                .state {
+                    color: green;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+
+                .address {
+                    margin-top: 15px;
+                    padding: 15px;
+                    background: lighten($accent-color, 20%);
+                    border-radius: 5px;
+
+                    .address-cus {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

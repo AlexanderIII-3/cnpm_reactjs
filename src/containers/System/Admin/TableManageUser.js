@@ -5,12 +5,10 @@ import * as actions from "../../../store/actions";
 import { emitter } from '../../../utils/emitter';
 
 import './tableManageUser.scss';
-import { Alert } from 'reactstrap';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 // import style manually
 import 'react-markdown-editor-lite/lib/index.css';
-import DetailDoctor from './DetailDoctor'
 
 
 // Register plugins if required
@@ -20,9 +18,7 @@ import DetailDoctor from './DetailDoctor'
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 // Finish!
-function handleEditorChange({ html, text }) {
-    console.log('handleEditorChange', html, text);
-}
+
 
 class TableManageUser extends Component {
     constructor(props) {
@@ -65,9 +61,10 @@ class TableManageUser extends Component {
     render() {
         let userArr = this.state.userArr
         let isOpen = this.state.isOpen
+        console.log('check login', this.props.isLoggedIn)
         return (
             <React.Fragment>
-
+                hlooo
 
 
                 <div className="users-table mt-3  mx-4 mb-5"  >
@@ -79,19 +76,17 @@ class TableManageUser extends Component {
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Active</th>
+                                <th>Active1</th>
                             </tr>
 
                             {userArr && userArr.map((item, index) => {
                                 return (
-                                    <tr key={index.id}>
+                                    <tr key={index.id} >
                                         <td>{item.id}</td>
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>
                                         <td>{item.phoneNumber}</td>
-                                        <td>{item.address}</td>
                                         <td>  <button className='btn-edit' onClick={() => { this.handleEditUser(item) }} ><i className='fas fa-pencil-alt'></i>
                                         </button>
                                             <button onClick={() => { this.handleDelete(item) }} className='btn-delete'><i className='fas fa-trash-alt' ></i>
@@ -117,12 +112,10 @@ class TableManageUser extends Component {
 
                         </tbody>
                     </table>
-                    {/* <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} /> */}
 
 
                 </div>
 
-                {isOpen === true && <DetailDoctor />}
 
 
             </React.Fragment>
@@ -133,7 +126,9 @@ class TableManageUser extends Component {
 
 const mapStateToProps = state => {
     return {
-        userRedux: state.admin.userArr
+        userRedux: state.admin.userArr,
+        isLoggedIn: state.user.isLoggedIn
+
     };
 };
 

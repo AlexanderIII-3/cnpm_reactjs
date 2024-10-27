@@ -8,8 +8,6 @@ import { getDetailInforDoctor } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfor from './DoctorExtraInfor';
-import LikeAndShare from '../SocialPlungin/LikeAndShare';
-import Comment from '../SocialPlungin/Comment';
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +17,7 @@ class DetailDoctor extends Component {
         };
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.detailDoctor && this.state.detailDoctor) {
+        if (prevProps.detailDoctor !== this.state.detailDoctor) {
             this.setState({ detailDoctor: this.state.detailDoctor });
         }
     }
@@ -69,9 +67,7 @@ class DetailDoctor extends Component {
                                 }
                                 <div className='like-share-plugin'>
 
-                                    <LikeAndShare
-                                        dataHref={currentURL}
-                                    ></LikeAndShare>
+
                                 </div>
                             </div>
 
@@ -96,10 +92,7 @@ class DetailDoctor extends Component {
                         }
                     </div>
                     <div className='comment-doctor'>
-                        <Comment
-                            dataHref={currentURL}
-                            width={'100%'}
-                        ></Comment>
+
                     </div>
                 </div>
 

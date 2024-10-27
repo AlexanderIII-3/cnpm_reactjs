@@ -10,7 +10,7 @@ const initContentOfConfirmModal = {
 const initialState = {
     started: true,
     language: 'vi',
-    systemMenuPath: '/system/user-manage',
+    systemMenuPath: '/system/user-redux',
     contentOfConfirmModal: {
         ...initContentOfConfirmModal
     }
@@ -32,7 +32,6 @@ const appReducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.CHANGE_LANGUAGE:
-            console.log('check redux from alex', action)
             return {
                 ...state,
                 language: action.language,

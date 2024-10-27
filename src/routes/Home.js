@@ -6,8 +6,13 @@ class Home extends Component {
 
     render() {
         const { isLoggedIn } = this.props;
-        let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
-
+        let { userInfo } = this.props
+        if (userInfo && userInfo.user.roleId === "R2") {
+            let linkToRedirect = isLoggedIn ? '/home' : '/system/user-redux';
+            console.log('check link redirect to ', linkToRedirect)
+        }
+        let linkToRedirect = isLoggedIn ? '/system/user-redux' : '/home';
+        console.log('check link redirect to ', linkToRedirect)
         return (
             <Redirect to={linkToRedirect} />
         );
@@ -17,7 +22,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo
     };
 };
 

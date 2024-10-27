@@ -1,25 +1,6 @@
 {
     "home-header": {
-        "speciality": "Chuyên khoa",
-        "searchdoctor": "Tìm bác sĩ theo chuyên khoa",
-        "HealthFacilities": "Cở sở y tế",
-        "ChooseAHospitalOrClinic": "Chọn bệnh viện phòng khám",
-        "Doctor": "Bác sĩ",
-        "GoodDoctor": "Tìm bác sĩ giỏi",
-        "Re-examination": "Tái khám",
-        "GeneralHealth": "Sức khoẻ tổng quát",
-        "Support": "Hỗ trợ",
         "welcome": "Konichiwa "
-    },
-    "banner": {
-        "title1": "NỀN TẢNG Y TẾ",
-        "title2": "CHĂM SÓC SỨC KHOẺ TOÀN DIỆN",
-        "child1": "Khám chuyên khoa ",
-        "child2": "Khám từ xa",
-        "child3": "Khám tổng quát",
-        "child4": "Xét nghiệm y học",
-        "child5": "Sức khoẻ tinh thần",
-        "child6": "Khám nha khoa"
     },
     "menu": {
         "admin": {
@@ -28,11 +9,7 @@
             "manage-admin": "Quản lý admin",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux ",
-            "clinic": "Phòng khám",
-            "specialty": "Chuyên khoa",
-            "manage-specialty": "Quản lý chuyển khoa",
-            "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang"
+            "manage-drink": "Quản lý Đồ Uống"
         },
         "doctor": {
             "manage-shedule": "Quản Lý Kế Hoạch Khám Bệnh",

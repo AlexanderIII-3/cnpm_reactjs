@@ -1,5 +1,4 @@
 import actionTypes from '../actions/actionTypes';
-import { toast } from "react-toastify";
 
 
 const initialState = {
@@ -16,6 +15,8 @@ const initialState = {
     specialtyArr: [],
     clinicArr: [],
     handBookArr: [],
+    listDrink: [],
+    listTypeDrink: [],
 }
 
 const appReducer = (state = initialState, action) => {
@@ -72,7 +73,6 @@ const appReducer = (state = initialState, action) => {
         case actionTypes.FETCH_ROLE_SUCCESS:
             let copyRState = { ...state };
             copyRState.roles = action.data
-            console.log('anh the anh dep trai ROLE success', copyRState.roles)
 
 
             return {
@@ -83,7 +83,6 @@ const appReducer = (state = initialState, action) => {
         case actionTypes.FETCH_ROLE_FAIL:
         // crud redux
         case actionTypes.CREATE_USER_SUCCESS:
-            console.log('Create user success', action)
         case actionTypes.CREATE_USER_FAIL:
 
 
@@ -158,42 +157,31 @@ const appReducer = (state = initialState, action) => {
                 ...state
             }
 
-        //specialty
-        case actionTypes.FETCH_REQUIRED_SPECIALTY_INFOR_SUCCESS:
-            state.specialtyArr = action.data;
+
+
+        // list drink 
+        case actionTypes.FETCH_REQUIRED_ALL_LIST_DRINK_SUCCESS:
+            state.listDrink = action.data
+
             return {
                 ...state
             }
-        case actionTypes.FETCH_REQUIRED_SPECIALTY_INFOR_FAIL:
-            state.specialtyArr = [];
-            return {
-                ...state
-            }
-        //clinic
-        case actionTypes.FETCH_REQUIRED_CLINIC_INFOR_SUCCESS:
-            state.clinicArr = action.data;
-            return {
-                ...state
-            }
-        case actionTypes.FETCH_REQUIRED_CLINIC_INFOR_FAIL:
-            state.clinicArr = [];
+        case actionTypes.FETCH_REQUIRED_ALL_LIST_DRINK_FAIL:
+            state.listDrink = [];
             return {
                 ...state
             }
 
 
-        // hand book
-        case actionTypes.FETCH_ALL_HANDBOOK_SUCCESS:
-            console.log('check handbook-----', action.data);
-
-            state.handBookArr = action.data;
-            console.log('check handbook-----state', state.handBookArr);
+        case actionTypes.FETCH_DRINK_GAS_SUCCESS:
+            state.listTypeDrink = action.data;
 
             return {
                 ...state
             }
-        case actionTypes.FETCH_ALL_HANDBOOK_FAIL:
-            state.handBookArr = [];
+        case actionTypes.FETCH_DRINK_GAS_FAIL:
+            state.listTypeDrink = [];
+
             return {
                 ...state
             }

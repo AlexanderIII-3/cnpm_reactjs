@@ -1,0 +1,3 @@
+INSERT INTO ALLCODES (ALLCODES.type,ALLCODES.keyMap, ALLCODES.valueEn, ALLCODES.valueVi) values ('DISH','D1','Đồ Uống Có Gas', 'Đồ Uống Có Gas' ); 									
+INSERT INTO ALLCODES (ALLCODES.type,ALLCODES.keyMap, ALLCODES.valueEn, ALLCODES.valueVi) values ('DISH','D2','Coffe', 'Coffe' ); 									
+INSERT INTO ALLCODES (ALLCODES.type,ALLCODES.keyMap, ALLCODES.valueEn, ALLCODES.valueVi) values ('DISH','D3','Nước Hoa Quả', 'Nước Hoa Quả' ); 

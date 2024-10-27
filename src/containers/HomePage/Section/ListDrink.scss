@@ -1,0 +1,47 @@
+.list-drink-container {
+
+    .list-body-content {
+
+
+        .list-body {
+            border: 1px solid red;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            text-align: center;
+            margin: 20px;
+
+            .list-child {
+                width: 170px;
+                height: auto;
+
+                border: 1px solid green;
+
+                .img-drink {
+                    background: url('../../../assets/logo.png');
+                    width: auto;
+                    height: 110px;
+                    background-position: center center !important;
+                    background-repeat: no-repeat !important;
+                    background-size: cover !important;
+                }
+
+                .name-drink {
+                    font-weight: 300;
+                }
+
+
+                .cart-pirice {
+                    padding-top: 3px;
+                    border: 1px solid red;
+                }
+
+
+
+
+
+            }
+
+        }
+    }
+}

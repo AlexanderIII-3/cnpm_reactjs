@@ -148,11 +148,7 @@ class UserManage extends Component {
         return (
 
             <div className="users-container">
-                <ModalUser
-                    closeModal={this.closeModal}
-                    isOpen={this.state.isOpenModal}
-                    createNewUser={this.createNewUser}
-                />
+
                 {this.state.isOpenEditModal &&
                     < ModalEditUser
                         isOpen={this.state.isOpenEditModal}
@@ -186,8 +182,7 @@ class UserManage extends Component {
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Active</th>
+                                <th>Active1</th>
                             </tr>
                             {arrUser && arrUser.map((item, index) => {
                                 return (
@@ -198,12 +193,10 @@ class UserManage extends Component {
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>
                                         <td>{item.phoneNumber}</td>
-                                        <td>{item.address}</td>
                                         <td>
                                             <button className='btn-edit' onClick={() => { this.handleEditUser(item) }} ><i className='fas fa-pencil-alt'></i>
                                             </button>
                                             <button onClick={() => { this.handleDelete(item) }} className='btn-delete'><i className='fas fa-trash-alt' ></i></button>
-                                            <button onClick={() => { this.takeDetailUser(item) }} className='btn-detail' >Detail</button>
                                         </td>
                                     </tr>
 

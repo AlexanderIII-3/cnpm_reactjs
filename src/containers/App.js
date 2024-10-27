@@ -8,6 +8,7 @@ import CustomScrollbars from '../components/CustomScrollbars'
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import LoadingOverlay from 'react-loading-overlay';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+import DetailDrink from '../../src/containers/Patient/DetailInfor/DetailDrink.js'
 import { path } from '../utils'
 import Home from '../routes/Home';
 // import Login from '../routes/Login';
@@ -15,13 +16,8 @@ import Login from './Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
-import { CustomToastCloseButton } from '../components/CustomToast';
-import Doctor from '../routes/Doctor.js';
-import Speciatily from '../routes/Speciatily.js';
-import VerifyEmail from './Patient/VerifyEmail.js';
-import DetailSpecialty from './Patient/Specialty/DetailSpecialty.js';
-import DetailClinic from './Patient/Clinic/DetailClinic.js';
-import DetailHandBook from './Patient/Handbook/DetailHandBook.js';
+import CartDrink from './Patient/DetailInfor/CartDrink.js';
+import Bill from './Patient/DetailInfor/Bill/Bill.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -52,17 +48,14 @@ class App extends Component {
                             <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
                                 <Switch>
                                     <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />
+
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                                    <Route path={path.DOCTOR} component={userIsAuthenticated(Doctor)} />
-                                    {/* <Route path={'/specialty/'} component={userIsAuthenticated(Speciatily)} /> */}
-                                    <Route path={path.HOMEPAGE} component={HomePage} />
-                                    <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
-                                    <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
-                                    <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
-                                    <Route path={path.DETAIL_HANDBOOK} component={DetailHandBook} />
 
-                                    <Route path={path.VERIFY_EMAI_BOOKING} component={VerifyEmail} />
+                                    <Route path={path.DETAIL_DRINK} component={userIsAuthenticated(DetailDrink)} />
+                                    <Route path={path.CART_DRINK} component={userIsAuthenticated(CartDrink)} />
+                                    <Route path={path.VIEW_BILL} component={userIsAuthenticated(Bill)} />
 
 
                                 </Switch>

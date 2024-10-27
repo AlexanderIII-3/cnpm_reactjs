@@ -1,38 +1,44 @@
 import actionTypes from './actionTypes';
-import { handleGetAllHandBook, handleGetDetailClinicById, getAllClinic, getAllCodeService, postInforDoctor, fetchSpecialtyInfor, getAllSpecialty, createNewUserService, getAllUsers, handleDeleteUserService, EditUserService, getTopDoctor, detailUserService, getAllDoctor } from '../../services/userService';
+import {
+    getAllListDrinks, getAllCodeService, postInforDrink,
+    createNewUserService, getAllUsers, handleDeleteUserService,
+    EditUserService, getTopDoctor, detailUserService, getAllDoctor,
+    getAllListDrinkByType
+} from '../../services/userService';
 import { toast } from "react-toastify";
+import { CRUD_ACTIONS } from '../../utils';
 
 //GENDER
-export const fetchGenderStart = () => {
-    return async (dispatch, getState) => {
-        try {
-            dispatch({ type: actionTypes.FETCH_GENDER_START });
-            let res = await getAllCodeService('GENDER')
-            if (res && res.errorCode === 0) {
-                dispatch(fetchGenderSuccess(res.data))
-                // console.log('check redux success', getState)
+// export const fetchGenderStart = () => {
+//     return async (dispatch, getState) => {
+//         try {
+//             dispatch({ type: actionTypes.FETCH_GENDER_START });
+//             let res = await getAllCodeService('GENDER')
+//             if (res && res.errorCode === 0) {
+//                 dispatch(fetchGenderSuccess(res.data))
+//                 // console.log('check redux success', getState)
 
-            }
-            else {
-                dispatch(fetchGenderFail())
-            }
-        } catch (e) {
-            dispatch(fetchGenderFail())
+//             }
+//             else {
+//                 dispatch(fetchGenderFail())
+//             }
+//         } catch (e) {
+//             dispatch(fetchGenderFail())
 
-            console.log('', e)
+//             console.log('', e)
 
-        }
-    }
+//         }
+//     }
 
-}
+// }
 
-export const fetchGenderSuccess = (genderData) => ({
-    type: actionTypes.FETCH_GENDER_SUCCESS,
-    data: genderData
-})
-export const fetchGenderFail = () => ({
-    type: actionTypes.FETCH_GENDER_FAIL
-})
+// export const fetchGenderSuccess = (genderData) => ({
+//     type: actionTypes.FETCH_GENDER_SUCCESS,
+//     data: genderData
+// })
+// export const fetchGenderFail = () => ({
+//     type: actionTypes.FETCH_GENDER_FAIL
+// })
 //POSTIONS
 export const fetchPostionStart = () => {
     return async (dispatch, getState) => {
@@ -63,16 +69,14 @@ export const fetchPositionSuccess = (positionData) => ({
 export const fetchPositionFail = () => ({
     type: actionTypes.FETCH_POSITION_FAIL
 })
-// ROLE
+// DRINK_GAS
 export const fetchRoleStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllCodeService('ROLE')
-            console.log('check id role laex :', res.data)
 
 
             if (res.errorCode === 0 && res) {
-                console.log('athe le dep trai ne')
                 dispatch(fetchRoleSuccess(res.data))
 
             }
@@ -103,7 +107,6 @@ export const createUserStart = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await createNewUserService(data)
-            console.log('check user response', res.user)
             if (res.user && res.user.errorCode === 0) {
 
 
@@ -137,9 +140,7 @@ export const createUserFail = () => ({
 export const fetchAllUserStart = () => {
     return async (dispatch, getState) => {
         try {
-            let res1 = await getTopDoctor(2)
             let res = await getAllUsers('ALL')
-            console.log('check id role laex :', res)
 
 
             if (res.errorCode === 0 && res) {
@@ -184,7 +185,7 @@ export const deleteUserStart = (id) => {
 
             if (res.errorCode === 0 && res) {
                 dispatch(deleteUserSuccess())
-                toast.success("DELETE USER SUCCESSFUL! :))Ỏ HI HI");
+                toast.success("DELETE  SUCCESSFUL! :))Ỏ HI HI");
 
                 dispatch(fetchAllUserStart())
 
@@ -195,7 +196,7 @@ export const deleteUserStart = (id) => {
             }
         } catch (e) {
             dispatch(deleteAllUserFail())
-            toast.success("DELETE USER FAILED! :))Ỏ HI HI");
+            toast.success("DELETE  FAILED! :))Ỏ HI HI");
 
 
             console.log('', e)
@@ -226,7 +227,7 @@ export const editUserStart = (data) => {
             }
         } catch (e) {
             dispatch(editUserFail())
-            toast.fail("EDIT USER FAILED! :))Ỏ HI HI");
+            toast.error("EDIT USER FAILED! :))Ỏ HI HI");
 
             console.log('', e)
 
@@ -324,29 +325,55 @@ export const fetchAllDoctorSuccess = (doctor) => ({
 
 
 });
-export const saveInforDoctor = (data) => {
+
+
+export const saveInforDrink = (data) => {
     return async (dispatch, getState) => {
         try {
-            let res = await postInforDoctor(data)
-            if (res && res.errorCode === 0) {
-                toast.success("SAVE INFORMATION DOCTOR SUCCESSFUL!");
+            if (data.action === CRUD_ACTIONS.CREATE) {
+                let res = await postInforDrink(data)
+                console.log('check respone ', res)
+                if (res && res.errorCode === 0) {
+                    toast.success("Create New Drink Successfully!")
+                    dispatch({
 
-                dispatch({
+                        type: actionTypes.SAVE_DETAIL_DOCTORS_SUCCESS,
 
-                    type: actionTypes.SAVE_DETAIL_DOCTORS_SUCCESS,
+                    })
+                } else {
+                    toast.error('Create Failed!')
+                    alert(`${res.errorMess}`)
 
-                })
-            } else {
-                toast.error("SAVE INFORMATION DOCTOR FAIL!");
+                    dispatch({
+                        type: actionTypes.SAVE_DETAIL_DOCTORS_FAIL,
 
-                dispatch({
-                    type: actionTypes.SAVE_DETAIL_DOCTORS_FAIL,
+                    })
 
-                })
-
+                }
             }
+            if (data.action === CRUD_ACTIONS.EDIT) {
+                let res = await postInforDrink(data)
+                console.log('check respone ', res)
+                if (res && res.errorCode === 0) {
+                    toast.success("Edit  Drink Successfully!")
+                    dispatch({
+
+                        type: actionTypes.SAVE_DETAIL_DOCTORS_SUCCESS,
+
+                    })
+                } else {
+                    toast.error('Edit Failed!')
+
+                    dispatch({
+                        type: actionTypes.SAVE_DETAIL_DOCTORS_FAIL,
+
+                    })
+
+                }
+            }
+
         } catch (error) {
-            toast.success("SAVE INFORMATION DOCTOR FAIL!");
+            toast.error("SAVE INFORMATION DOCTOR FAIL!");
 
             console.log(error)
             dispatch({
@@ -386,21 +413,18 @@ export const getRequiredDoctorInfor = () => {
             dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START });
             let resPrice = await getAllCodeService('PRICE')
             let resPayment = await getAllCodeService('PAYMENT')
-            let resProvince = await getAllCodeService('PROVINCE')
-            let resSpecialty = await fetchSpecialtyInfor();
-            let resClinic = await getAllClinic();
+            let resDish = await getAllCodeService('DISH')
+
             if (resPrice && resPrice.errorCode === 0
                 && resPayment && resPayment.errorCode === 0
-                && resProvince && resProvince.errorCode === 0
-                && resSpecialty && resSpecialty.errorCode === 0
-                && resClinic && resClinic.errorCode === 0
+                && resDish && resDish.errorCode === 0
+
             ) {
                 let data = {
                     resPrice: resPrice.data,
                     resPayment: resPayment.data,
-                    resProvince: resProvince.data,
-                    resSpecialty: resSpecialty.data,
-                    resClinic: resClinic.data
+                    resDish: resDish.data
+
                 }
 
                 dispatch(fetchRequiredDoctorInforSuccess(data))
@@ -428,104 +452,98 @@ export const fetchRequiredDoctorInforFail = () => ({
     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAIL
 })
 
-export const getRequiredSpecialtyInfor = () => {
+
+// list drink
+export const fetchRequiredAllListDrink = (data) => {
     return async (dispatch, getState) => {
         try {
-            dispatch({ type: actionTypes.FETCH_REQUIRED_SPECIALTY_INFOR_SUCCESS });
-            let res = await fetchSpecialtyInfor();
-            if (res && res.errorCode === 0) {
-                let data = res.data;
+            dispatch({ type: actionTypes.FETCH_REQUIRED_ALL_LIST_DRINK_START });
+            let data = await getAllListDrinks();
+
+            if (data.errorCode === 0 && data.data) {
+                let dataDrink = data.data;
 
 
 
-                dispatch(fetchRequiredSpecialtyInforSuccess(data))
+
+                dispatch(fetchRequiredListDrinkSuccess(dataDrink))
+                // console.log('check redux success', getState)
 
             }
             else {
-                dispatch(fetchRequiredSpecialtyInforFail())
+                dispatch(fetchRequiredListDrinkFail())
             }
         } catch (e) {
-            dispatch(fetchRequiredSpecialtyInforFail())
+            dispatch(fetchRequiredListDrinkFail())
 
             console.log('', e)
 
         }
     }
-}
 
-export const fetchRequiredSpecialtyInforSuccess = (data) => ({
-    type: actionTypes.FETCH_REQUIRED_SPECIALTY_INFOR_SUCCESS,
+};
+export const fetchRequiredListDrinkSuccess = (data) => ({
+    type: actionTypes.FETCH_REQUIRED_ALL_LIST_DRINK_SUCCESS,
     data: data
 })
-export const fetchRequiredSpecialtyInforFail = () => ({
-    type: actionTypes.FETCH_REQUIRED_SPECIALTY_INFOR_FAIL
+
+export const fetchRequiredListDrinkFail = () => ({
+    type: actionTypes.FETCH_REQUIRED_ALL_LIST_DRINK_FAIL
 })
 
-// clinic
-export const getRequiredClinicInfor = () => {
+
+
+export const fetchDrinkGastart = () => {
     return async (dispatch, getState) => {
+
         try {
-            dispatch({ type: actionTypes.FETCH_REQUIRED_CLINIC_INFOR_SUCCESS });
-            let res = await getAllClinic();
-            if (res && res.errorCode === 0) {
-                let data = res.data;
 
 
 
-                dispatch(fetchRequiredClinicInforSuccess(data))
+
+            let resFru = await getAllListDrinkByType('D3')
+
+
+            let resCoffe = await getAllListDrinkByType('D2')
+            let resGas = await getAllListDrinkByType('D1')
+
+
+
+
+
+
+
+
+            if (resFru && resFru.errorCode === 0
+                && resGas && resGas.errorCode === 0
+                && resCoffe && resCoffe.errorCode === 0
+            ) {
+                let data = {
+                    resFru: resFru.data,
+                    resGas: resGas.data,
+                    resCoffe: resCoffe.data
+                }
+                dispatch(fetchDrinkGasSuccess(data))
 
             }
             else {
-                dispatch(fetchRequiredClinicInforFail())
+
+                dispatch(fetchDrinkGasFail())
             }
+
         } catch (e) {
-            dispatch(fetchRequiredClinicInforFail())
+            dispatch(fetchDrinkGasFail())
 
             console.log('', e)
 
         }
     }
+
 }
-
-export const fetchRequiredClinicInforSuccess = (data) => ({
-    type: actionTypes.FETCH_REQUIRED_CLINIC_INFOR_SUCCESS,
-    data: data
+export const fetchDrinkGasSuccess = (listData) => ({
+    type: actionTypes.FETCH_DRINK_GAS_SUCCESS,
+    data: listData
 })
-export const fetchRequiredClinicInforFail = () => ({
-    type: actionTypes.FETCH_REQUIRED_CLINIC_INFOR_FAIL
-})
-
-
-
-export const getRequiredHandBook = () => {
-    return async (dispatch, getState) => {
-        try {
-            dispatch({ type: actionTypes.FETCH_ALL_HANDBOOK_SUCCESS });
-            let res = await handleGetAllHandBook();
-            if (res && res.errorCode === 0) {
-
-
-
-                dispatch(fetchRequiredHandBookSuccess(res.data))
-
-            }
-            else {
-                dispatch(fetchRequiredHandBookFail())
-            }
-        } catch (e) {
-            dispatch(fetchRequiredHandBookFail())
-
-            console.log('', e)
-
-        }
-    }
-}
-
-export const fetchRequiredHandBookSuccess = (data) => ({
-
-    type: actionTypes.FETCH_ALL_HANDBOOK_SUCCESS,
-    data: data
-})
-export const fetchRequiredHandBookFail = () => ({
-    type: actionTypes.FETCH_ALL_HANDBOOK_FAIL
+export const fetchDrinkGasFail = () => ({
+    type: actionTypes.FETCH_DRINK_GAS_FAIL
 })

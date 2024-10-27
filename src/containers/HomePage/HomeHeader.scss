@@ -1,7 +1,7 @@
 .home-header-container {
-    height: 70px;
+    height: 90px;
     width: 100%;
-    padding: 10 20px;
+    padding: 20 20px;
     position: sticky;
     top: 0;
     background-color: white;
@@ -20,9 +20,12 @@
             width: 25%;
 
             .header-logo {
-                background: url('../../assets/logo.png') center center no-repeat;
-                height: 20px;
-                width: 20px;
+                background: url('../../assets/logo1.jpg');
+                height: 100%;
+                width: 100%;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 cursor: pointer;
             }
 
@@ -44,12 +47,14 @@
 
             .child-content {
 
+                margin: 50px auto;
 
-                .sub-title {
-                    font-size: 12px;
-                    width: 400;
-                    padding: 10px;
-                }
+                font-size: 30px;
+                width: 400;
+                font-weight: 300;
+                padding: 10px;
+
+
             }
         }
 
@@ -61,52 +66,10 @@
             justify-content: flex-end;
             align-items: center;
 
-            .support {
-                padding-right: 50px;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-
-                .i {
-                    margin-right: 5px;
-                }
-            }
-
-            .language-vi {
-                cursor: pointer;
-                opacity: 0.3;
-
-                &.active {
-                    opacity: 1;
-
-                    span {
-                        color: red;
-
-                    }
 
 
-                }
-            }
-
-            .language-en {
-                margin: 0 15px;
-                cursor: pointer;
-                opacity: 0.3;
 
 
-                &.active {
-                    opacity: 1;
-
-                    span {
-                        color: rgb(30, 128, 227);
-
-                    }
-
-
-                }
-
-
-            }
 
         }
     }
@@ -114,7 +77,7 @@
 }
 
 .home-banner-container {
-    background: url('../../assets/picture.png');
+    background: url('../../assets/drink.webp');
     height: 500px;
     background-repeat: no-repeat;
     background-size: cover;

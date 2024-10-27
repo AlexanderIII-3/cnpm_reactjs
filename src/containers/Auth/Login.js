@@ -50,7 +50,6 @@ class Login extends Component {
             }
         } catch (error) {
             if (error.response) {
-                console.log('alex', error.response)
 
                 if (error.response.data) {
                     this.setState({
@@ -138,7 +137,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        // userLoginFail: () => dispatch(actions.adminLoginFail()),
         userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor)),
     };
 };

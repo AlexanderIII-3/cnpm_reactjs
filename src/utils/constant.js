@@ -5,14 +5,10 @@ export const path = {
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
-    DOCTOR: '/doctor/',
-    DETAIL_DOCTOR: '/detail-doctor/:id',
-    VERIFY_EMAI_BOOKING: '/verifly-booking',
-    DETAIL_SPECIALTY: '/detail-specialty/:id',
-    DETAIL_HANDBOOK: '/detail-handbook/:id',
+    DETAIL_DRINK: `/detail-drink/:id`,
+    CART_DRINK: `/cart-drink-cus/:id`,
+    VIEW_BILL: `/viewBill/:id`,
 
-
-    DETAIL_CLINIC: '/detail-clinic/:id'
 
 
 };
@@ -40,6 +36,6 @@ export const YesNoObj = {
 };
 export const USER_ROLE = {
     ADMIN: 'R1',
-    DOCTOR: 'R2',
-    PATIENT: 'R3',
+    EMPLOYEE: 'R2',
+    CUSTOMER: 'R3',
 }

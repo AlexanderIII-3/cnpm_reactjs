@@ -1,25 +1,6 @@
 {
     "home-header": {
-        "speciality": "Specialist",
-        "searchdoctor": "Find doctors by specialty",
-        "HealthFacilities": "Medical facility",
-        "ChooseAHospitalOrClinic": "Choose a hospital or clinic",
-        "Doctor": "Doctor",
-        "GoodDoctor": "Find a good doctor",
-        "Re-examination": "Re-examination",
-        "GeneralHealth": "GeneralHealth",
-        "Support": "Support",
-        "welcome": "Welcome "
-    },
-    "banner": {
-        "title1": "MEDICAL FOUNDATION",
-        "title2": "COMPREHENSIVE HEALTH CARE",
-        "child1": "Specialized examination",
-        "child2": "Remote examination",
-        "child3": "General examination",
-        "child4": "Medical tests",
-        "child5": "Mental health",
-        "child6": "Dental examination"
+        "welcome": "Hello "
     },
     "menu": {
         "admin": {
@@ -28,12 +9,7 @@
             "manage-admin": "Manage Admin",
             "crud": "CRUD User",
             "crud-redux": "CRUD Redux ",
-            "manage-clinic": "Manage Clinic",
-            "clinic": "Clinic",
-            "specialty": "Specialty",
-            "manage-specialty": "Manage Specialty",
-            "handbook": "Handbook",
-            "manage-handbook": "Manage Handbook"
+            "manage-drink": "Manage Drinks"
         },
         "doctor": {
             "manage-shedule": "Manage Doctor's Shedule",
