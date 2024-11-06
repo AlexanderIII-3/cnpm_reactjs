@@ -5,7 +5,6 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
 import CustomScrollbars from '../components/CustomScrollbars'
-import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import LoadingOverlay from 'react-loading-overlay';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 import DetailDrink from '../../src/containers/Patient/DetailInfor/DetailDrink.js'
@@ -18,6 +17,7 @@ import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
 import CartDrink from './Patient/DetailInfor/CartDrink.js';
 import Bill from './Patient/DetailInfor/Bill/Bill.js';
+import Cus_Bill from './Patient/DetailInfor/Bill/Cus_Bill.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -56,6 +56,9 @@ class App extends Component {
                                     <Route path={path.DETAIL_DRINK} component={userIsAuthenticated(DetailDrink)} />
                                     <Route path={path.CART_DRINK} component={userIsAuthenticated(CartDrink)} />
                                     <Route path={path.VIEW_BILL} component={userIsAuthenticated(Bill)} />
+                                    <Route path={path.VIEW_BILL_CUSTOMER} component={userIsAuthenticated(Cus_Bill)} />
+                                    <Route path={path.VIEW_ODER_CART} component={userIsAuthenticated(CartDrink)}></Route>
+                                    <Route path={path.VIEW_ODER_BILL} component={userIsAuthenticated(Cus_Bill)}></Route>
 
 
                                 </Switch>

@@ -56,6 +56,17 @@ a {
 
 }
 
+select {
+    margin-top: 10px;
+    border: none;
+    background: #ddd;
+
+    // &:active {
+    //     background: pink;
+    //     color: #ddd;
+    // }
+}
+
 .card {
     position: relative;
     display: -webkit-box;
@@ -71,4 +82,25 @@ a {
     background-clip: border-box;
     border: 1px solid #eff0f2;
     border-radius: 1rem;
+}
+
+.infomation {
+    font-weight: 600;
+    padding-bottom: 30px;
+}
+
+.text-sm-end {
+    button {
+        border: none;
+        min-width: 90px;
+        min-height: 35px;
+        border-radius: 8%;
+        background-color: #23c7e4;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+
 }

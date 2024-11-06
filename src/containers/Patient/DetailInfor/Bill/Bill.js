@@ -6,7 +6,7 @@ import * as actions from "../../../../store/actions";
 import './Bill.scss';
 import _, { isElement, times } from 'lodash';
 import { LANGUAGES } from '../../../../utils';
-import { handleGetAllBill } from '../../../../services/userService';
+import { handleGetAllBill, handleSaveCusBill } from '../../../../services/userService';
 
 import HomeHeader from '../../../HomePage/HomeHeader';
 import moment from 'moment';
@@ -40,6 +40,9 @@ class Bill extends Component {
                 infor: infor
             })
         }
+        // if (prevState.totalPrice !== this.state.totalPrice) {
+        //     this.submitCharge()
+        // }
 
     }
     async componentDidMount() {
@@ -155,11 +158,62 @@ class Bill extends Component {
         }
 
     };
-    submitCharge = () => {
+
+
+    submitCharge = async () => {
         this.setState({
             status: true,
             totalPrice: 0
         })
+        await this.handleClearBill();
+        await this.handleReloadData()
+
+
+
+    }
+    handleRedicrect = () => {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id
+            if (this.props.history) {
+                this.props.history.push(`/handle-view-cus-bill/${id}`);
+
+            }
+        }
+
+    };
+    handleClearBill = async () => {
+        let { listOder } = this.state
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id;
+            let result = [];
+            {
+                listOder && listOder.length > 0 &&
+                    listOder.map(item => {
+                        let object = {};
+                        object.cusId = item.cusId;
+                        object.nameCus = item.nameCus;
+                        object.nameDrink = item.nameDrink;
+                        object.size = item.size;
+                        object.date = this.state.currentDate;
+                        object.price = item.price;
+                        object.amount = item.amount;
+                        result.push(object);
+
+                    })
+
+            }
+            let res = await handleSaveCusBill({
+
+                listOder: result,
+                cusId: id,
+                date: this.state.currentDate
+            })
+            if (res && res.errorCode === 0) {
+                await this.handleReloadData();
+            }
+
+        }
+
     }
     setAddress = (infor) => {
         let result = [];
@@ -218,7 +272,6 @@ class Bill extends Component {
 
 
 
-        // console.log('check payment method', paymentMethod.lable);
 
         return (
             <>
@@ -366,7 +419,25 @@ class Bill extends Component {
                                     }
                                 </div>
                                 {this.state.status === true &&
-                                    <div className='state'>Thanh toán thành công đơn hàng sẽ được giao đến bạn</div>
+                                    <>
+                                        {
+                                            this.state.status && this.state.status === true ?
+                                                <div className='state'>Thanh toán thành công đơn hàng sẽ được giao đến bạn</div>
+                                                :
+                                                ''
+                                        }
+
+                                        <div className='confirm-transfer'>
+
+                                            <button
+                                                onClick={() => this.handleRedicrect()}
+                                            >Xem Bill</button>
+
+
+
+
+                                        </div>
+                                    </>
                                 }
                             </div>
 

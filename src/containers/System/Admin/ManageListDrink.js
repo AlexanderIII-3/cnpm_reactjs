@@ -19,6 +19,7 @@ class ManageListDrink extends Component {
         this.state = {
             //save to markdown table
             name: '',
+            limitOder: '',
             previewImgUrl: '',
             avatar: '',
             action: CRUD_ACTIONS.CREATE,
@@ -148,7 +149,7 @@ class ManageListDrink extends Component {
                     description: this.state.description,
                     name: this.state.name,
                     image: this.state.avatar,
-
+                    limitOder: this.state.limitOder,
 
                     selectedPrice: this.state.selectedPrice,
                     selectedTypeDish: this.state.selectedTypeDish,
@@ -212,6 +213,7 @@ class ManageListDrink extends Component {
                     let object = {};
                     let labelVi = `${item.valueVI} VND`;
                     object.label = labelVi;
+
                     object.value = item.keyMap;
                     result.push(object)
                 })
@@ -382,6 +384,13 @@ class ManageListDrink extends Component {
                             <input
                                 onChange={(event) => this.handleChangeText(event, 'name')}
                                 value={this.state.name}
+                                className='form-control'></input>
+                        </div>
+                        <div className='col-2 form-group'>
+                            <label>Số lượng:</label>
+                            <input
+                                onChange={(event) => this.handleChangeText(event, 'limitOder')}
+                                value={this.state.limitOder}
                                 className='form-control'></input>
                         </div>
 

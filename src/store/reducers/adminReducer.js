@@ -2,16 +2,10 @@ import actionTypes from '../actions/actionTypes';
 
 
 const initialState = {
-    genders: [],
     roles: [],
     positions: [],
-    isLoadingGender: false,
     userArr: [],
-    topDoctor: [],
     userDetail: '',
-    allDoctor: [],
-    dataTime: [],
-    allRequiredDoctorInfor: [],
     specialtyArr: [],
     clinicArr: [],
     handBookArr: [],

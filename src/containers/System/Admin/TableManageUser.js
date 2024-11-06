@@ -76,7 +76,7 @@ class TableManageUser extends Component {
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
-                                <th>Active1</th>
+                                <th>Active</th>
                             </tr>
 
                             {userArr && userArr.map((item, index) => {

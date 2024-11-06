@@ -125,6 +125,22 @@
 
                         }
                     }
+
+                    .limit-oder {
+                        padding-top: 10px;
+                        display: flex;
+
+                        .limit {
+                            margin: 0px 15px;
+                            font-size: 18px;
+                            font-weight: 550;
+                        }
+
+                        span {
+                            padding-top: 5px;
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
 

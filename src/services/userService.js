@@ -95,6 +95,20 @@ const handleSaveBill = (data) => {
 const handleGetAllBill = (data) => {
     return axios.get(`/api/handle-get-all-bill?id=${data.id}&date=${data.date}`);
 };
+const handleSaveCusBill = (data) => {
+    return axios.post(`/api/handle-clear-bill`, data);
+
+}
+const handleGetAllBillCus = (data) => {
+    return axios.get(`/api/handle-get-all-customers?id=${data.id}&date=${data.date}`);
+
+};
+const handleFecthBillPerCustomer = (data) => {
+    console.log('check send user service', data)
+
+    return axios.get(`/api/get-info-cart-by-Id?id=${data.id}&date=${data.date}`)
+
+};
 
 
 
@@ -155,6 +169,7 @@ export {
     getAllListDrinkByType, getDetailDrinkById,
     handleAddToCart, handleFecthCartPerCustomer,
     handleDeleteOder, handleSaveBill,
-    handleGetAllBill
+    handleGetAllBill, handleSaveCusBill,
+    handleGetAllBillCus, handleFecthBillPerCustomer
 
 }

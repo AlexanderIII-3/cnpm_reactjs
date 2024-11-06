@@ -19,6 +19,13 @@ class HomeHeader extends Component {
 
         }
     }
+    handleRedirect = (type) => {
+        if (this.props.history) {
+            this.props.history.push(`/view-oder/${type}`);
+
+        }
+
+    }
 
     render() {
 
@@ -36,7 +43,18 @@ class HomeHeader extends Component {
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
-                                <div className='box'>Anh Gió Tai Xin Chào</div>
+                                <div
+                                    onClick={() => this.handleRedirect('cart')}
+                                    className='box-cart'>
+                                    <i className="fa-solid fa-cart-shopping"></i>
+                                    <div className='text-child'>Giỏ Hàng </div>
+                                </div>
+                                <div
+                                    onClick={() => this.handleRedirect('bill')}
+                                    className='box-bill'>
+                                    <i className="fa-solid fa-receipt"></i>
+                                    <div className='text-child'>Hoá Đơn </div>
+                                </div>
                             </div>
 
                         </div>
@@ -46,7 +64,7 @@ class HomeHeader extends Component {
                 {this.props.isShowBanner === true &&
                     <div className='home-banner-container'>
                         <div className='content-up'>
-                            <div className='title1'>Cửa Hàng Alex Drink Xin Chào</div>
+                            {/* <div className='title1'>Cửa Hàng Alex Drink Xin Chào</div> */}
                             <div className='title2'>Danh Sách Các Loại Nước Của Quán</div>
 
                         </div>

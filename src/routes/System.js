@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
-import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/UserRedux';
 import ManageListDrink from '../containers/System/Admin/ManageListDrink';
 import Header from '../containers/Header/Header';
-import ManageDoctor from '../containers/System/Admin/ManageDoctor';
 import HomePage from '../containers/HomePage/HomePage';
 
 

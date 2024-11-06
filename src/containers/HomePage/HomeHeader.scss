@@ -1,13 +1,12 @@
 .home-header-container {
     height: 90px;
     width: 100%;
-    padding: 20 20px;
+    padding: 0 20px;
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 101;
-
-
 
     .home-header-content {
         display: flex;
@@ -17,167 +16,186 @@
         .left-content {
             display: flex;
             align-items: center;
-            width: 25%;
+            flex: 1;
 
             .header-logo {
-                background: url('../../assets/logo1.jpg');
-                height: 100%;
-                width: 100%;
-                background-position: center center !important;
-                background-repeat: no-repeat !important;
-                background-size: cover !important;
+                background-image: url('../../assets/logo1.jpg');
+                height: 80%;
+                width: 60px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
                 cursor: pointer;
-            }
+                transition: transform 0.2s ease;
 
-            i {
-                font-size: 20px;
-                color: gray;
-                cursor: pointer;
-
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
 
         .center-content {
-
-
-            width: 50%;
-            text-align: center;
-            align-items: center;
+            flex: 2;
             display: flex;
+            justify-content: center;
+            align-items: center;
 
             .child-content {
+                margin-left: 550px;
+                display: flex;
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: #333;
+                padding: 10px 0;
+                letter-spacing: 0.5px;
+                transition: color 0.3s ease;
 
-                margin: 50px auto;
 
-                font-size: 30px;
-                width: 400;
-                font-weight: 300;
-                padding: 10px;
+
+                .box-cart {
+                    margin-right: 40px;
+
+                    .text-child {
+                        font-size: 10px !important;
+                        font-weight: 700;
+                    }
+
+                    &:hover {
+                        color: #23c7e4;
+                    }
+                }
+
+                .box-bill {
+                    .text-child {
+                        font-size: 10px !important;
+
+
+                        font-weight: 700;
+                    }
+
+                    &:hover {
+                        color: #23c7e4;
+                    }
+
+                }
 
 
             }
         }
 
         .right-content {
-
-
-            width: 25%;
+            flex: 1;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            gap: 15px;
 
+            i {
+                font-size: 22px;
+                color: #888;
+                cursor: pointer;
+                transition: color 0.3s;
 
-
-
-
-
+                &:hover {
+                    color: #23c7e4;
+                }
+            }
         }
     }
-
 }
 
 .home-banner-container {
-    background: url('../../assets/drink.webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/drink.webp');
     height: 500px;
-    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     .content-up {
-        background-image: linear-gradient(rgba(126, 126, 126, 0.4),
-                rgba(255, 255, 255, 0.1));
-        height: 65%;
-        padding-top: 16px;
+        padding-top: 20px;
+        text-align: center;
+        color: #fff;
 
-        .title1 {
-            text-align: center;
-            font-size: 30px;
-            text-shadow: 1px 1px 1px #333;
-            color: rgb(228, 182, 182);
-            margin-bottom: 10px;
-            margin-top: 35px;
-        }
-
+        .title1,
         .title2 {
-            text-align: center;
-            font-size: 30px;
-            text-shadow: 1px 1px 1px #333;
-            color: rgb(228, 182, 182);
+            font-size: 2rem;
+            margin: 10px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
         }
 
         .search {
-            width: fit-content;
             display: flex;
-            justify-content: center;
             align-items: center;
+            width: fit-content;
             margin: 0 auto;
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 25px;
             background: #f7d800;
-
-            i {
-                margin: 0 5px;
-            }
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
             input {
-                height: 30px;
-                width: 360px;
-                background: transparent;
+                width: 300px;
                 border: none;
                 outline: none;
+                background: transparent;
+                font-size: 1rem;
+                margin-left: 8px;
+                color: #333;
+            }
+
+            i {
+                color: #333;
             }
         }
     }
 
     .content-down {
-        height: 35%;
-        padding-bottom: 10px;
+        padding: 20px 0;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.1),
-                rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 
         .option {
             display: flex;
-            text-align: center;
-            gap: 50px;
-            justify-content: center;
-
+            gap: 40px;
 
             .option-child {
-
                 width: 100px;
                 text-align: center;
+                transition: transform 0.3s ease;
 
                 .icon-child {
-                    background: white;
-                    width: 40px;
-                    height: 40px;
-                    padding: 10px;
+                    width: 50px;
+                    height: 50px;
+                    background: #ffffff;
                     border-radius: 50%;
-                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     margin: 0 auto;
-
-                    font-size: 19px;
-                    color: #23c7e4
+                    font-size: 1.2rem;
+                    color: #23c7e4;
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
                 }
-
-
 
                 .text-child {
-                    font-size: 17px;
+                    margin-top: 5px;
+                    font-size: 1rem;
                     font-weight: 500;
+                    color: #333;
+                    transition: color 0.3s ease;
 
                     &:hover {
-                        color: rgb(10, 171, 171);
+                        color: #23c7e4;
                     }
-
-                    cursor: pointer;
                 }
 
+                &:hover {
+                    transform: translateY(-5px);
+                }
             }
         }
     }

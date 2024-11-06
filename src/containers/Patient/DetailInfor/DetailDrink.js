@@ -15,7 +15,7 @@ class DetailDrink extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            detailDrink: [],
+            detailDrink: {},
             countDrink: 0,
             currentDrinkId: -1,
             size: '',
@@ -27,7 +27,7 @@ class DetailDrink extends Component {
             date: moment(new Date()).startOf('day').valueOf()
         };
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.detailDrink !== this.state.detailDrink) {
             this.setState({
                 detailDrink: this.state.detailDrink,
@@ -41,6 +41,7 @@ class DetailDrink extends Component {
                     name: detailDrink.name
                 })
             }
+            await this.handleReload();
 
 
         }
@@ -50,6 +51,12 @@ class DetailDrink extends Component {
 
     }
     async componentDidMount() {
+        await this.handleReload();
+
+
+
+    }
+    handleReload = async () => {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
 
@@ -65,8 +72,7 @@ class DetailDrink extends Component {
             }
 
         }
-
-    }
+    };
     handleAddDrink = (name) => {
         let copyState = { ...this.state }
         copyState[name] = +copyState[name] + 1;
@@ -125,12 +131,11 @@ class DetailDrink extends Component {
 
         let data = await this.props.userInfo
         if (data) {
-            let result = []
+            let result = [];
             let data = this.props.userInfo.user;
             let firstName = data.firstName;
             let lastName = data.lastName;
             result.lable = firstName + ' ' + lastName;
-            // this.checkValidate()
             this.setState({
                 nameUser: result.lable,
                 idUser: data.id
@@ -148,6 +153,7 @@ class DetailDrink extends Component {
                 });
                 if (res && res.errorCode === 0) {
                     toast.success('Add To Cart Success!')
+                    await this.handleReload();
                 } else {
                     toast.error('Add To Cart Falled!')
                 }
@@ -244,6 +250,10 @@ class DetailDrink extends Component {
                                         }</span>
 
                                     </div>
+                                    <div className='limit-oder'>
+                                        <div className='limit'>Tồn kho: </div>
+                                        <span>{detailDrink && detailDrink.limitOder ? detailDrink.limitOder : 'Hiện tại đang hết mặt hàng này!'}</span>
+                                    </div>
 
                                 </div>
                                 <div className='content-down btn'>
@@ -273,9 +283,12 @@ class DetailDrink extends Component {
                                             onClick={(event) => this.handleAddDrink('countDrink')}> + </button>
                                     </div>
                                     <div className='add-cart'>
-                                        <button
-                                            onClick={() => this.handleSaveInforUser()}
-                                        ><i className="fa-solid fa-cart-shopping"></i>Them vao gio</button>
+
+                                        {detailDrink && detailDrink.limitOder ?
+                                            <button
+                                                onClick={() => this.handleSaveInforUser()}
+                                            ><i className="fa-solid fa-cart-shopping"></i>Them vao gio</button>
+                                            : ''}
                                         <button
                                             onClick={() => this.viewCart()}
                                         ><i className="fa-solid fa-cart-shopping"></i>Xem gio hang</button>

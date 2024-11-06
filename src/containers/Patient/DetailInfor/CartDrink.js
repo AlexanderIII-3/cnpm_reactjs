@@ -10,7 +10,8 @@ import { withRouter } from 'react-router';
 import NumberFormat from 'react-number-format';
 import { first } from 'lodash';
 import PaymentModal from './Modal/PaymentModal';
-import Bill from './Bill/Bill';
+import localization from 'moment/locale/vi'
+
 class CartDrink extends Component {
     constructor(props) {
         super(props);
@@ -66,7 +67,7 @@ class CartDrink extends Component {
 
 
             } else {
-                let labelVi = moment(new Date()).subtract(i, 'days').format('dddd - DD/MM');
+                let labelVi = moment(new Date()).subtract(i, 'days').locale('vi').format('dddd - DD/MM');
                 object.lable = labelVi
 
             }
@@ -195,10 +196,11 @@ class CartDrink extends Component {
 
         return totalPrice
     }
-    isCloseModal = () => {
+    isCloseModal = async () => {
         this.setState({
             isOpenModal: false
         })
+        await this.handleReloadData()
     }
     handleViewBll = (userId) => {
         if (this.props.history) {
@@ -484,7 +486,7 @@ class CartDrink extends Component {
                                 <div class="col-sm-6">
                                     {
                                         listOder && listOder.length > 0 ?
-                                            <div class="text-sm-end mt-2 mt-sm-0">
+                                            <div className="text-sm-end mt-2 mt-sm-0">
 
                                                 <i class="mdi mdi-cart-outline me-1"></i> <button
 
@@ -492,9 +494,10 @@ class CartDrink extends Component {
                                                 >Thanh Toán</button>
                                             </div>
                                             :
-                                            <div class="text-sm-end mt-2 mt-sm-0">
+                                            <div className="text-sm-end mt-2 mt-sm-0">
                                                 <div className='infomation'>Hiện không có oder nào!</div>
-                                                <i class="mdi mdi-cart-outline me-1"></i> <button
+                                                <i className="mdi mdi-cart-outline me-1"></i>
+                                                <button
 
                                                     onClick={() => this.handleViewBll(this.state.userId)}
                                                 >Xem hoá đơn</button>
