@@ -9,8 +9,7 @@ export const path = {
     CART_DRINK: `/cart-drink-cus/:id`,
     VIEW_BILL: `/viewBill/:id`,
     VIEW_BILL_CUSTOMER: `/handle-view-cus-bill/:id`,
-    VIEW_ODER_CART: `/view-oder/cart`,
-    VIEW_ODER_BILL: `/view-oder/bill`,
+
 
 
 

@@ -409,36 +409,37 @@ class Bill extends Component {
                                 </div>
                                 <div className='confirm-transfer'>
 
-                                    {this.state.status === false &&
+                                    {listOder && listOder.length > 0 ?
 
                                         <button
                                             onClick={() => this.submitCharge()}
                                         >Xác Nhận</button>
 
+                                        :
+                                        <>
+                                            {
+                                                this.state.status && this.state.status === true ?
+                                                    <div className='state'>Thanh toán thành công đơn hàng sẽ được giao đến bạn</div>
+                                                    :
+                                                    ''
+                                            }
+
+                                            <div className='confirm-transfer'>
+
+                                                <button
+                                                    onClick={() => this.handleRedicrect()}
+                                                >Xem Bill</button>
+
+
+
+
+                                            </div>
+                                        </>
+
 
                                     }
                                 </div>
-                                {this.state.status === true &&
-                                    <>
-                                        {
-                                            this.state.status && this.state.status === true ?
-                                                <div className='state'>Thanh toán thành công đơn hàng sẽ được giao đến bạn</div>
-                                                :
-                                                ''
-                                        }
 
-                                        <div className='confirm-transfer'>
-
-                                            <button
-                                                onClick={() => this.handleRedicrect()}
-                                            >Xem Bill</button>
-
-
-
-
-                                        </div>
-                                    </>
-                                }
                             </div>
 
                         </div>

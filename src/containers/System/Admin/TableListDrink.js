@@ -43,6 +43,7 @@ class TableListDrink extends Component {
         let data = await handleDeleteDrink(drink.id)
         if (data && data.errorCode === 0) {
             toast.success("Delete Success!");
+            await this.props.fetchRequiredAllListDrink()
 
         }
         else {
@@ -53,8 +54,10 @@ class TableListDrink extends Component {
     }
 
 
-    handleEditDrink = (drink) => {
+    handleEditDrink = async (drink) => {
         this.props.handleEditUserFromProps(drink)
+        await this.props.fetchRequiredAllListDrink()
+
     }
 
     render() {

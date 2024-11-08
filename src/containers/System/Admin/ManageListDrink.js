@@ -77,19 +77,24 @@ class ManageListDrink extends Component {
 
             if (this.props.ListDrink !== prevProps.ListDrink) {
 
-                this.setState({
-                    name: '',
-                    description: '',
-                    action: CRUD_ACTIONS.CREATE,
-                    previewImgUrl: '',
-
-                    selectedPrice: resPrice && resPrice.length > 0 ? resPrice[0].keyMap : '',
-                    selectedTypeDish: resDish && resDish.length > 0 ? resDish[0].keyMap : '',
-                })
+                this.clearStateData()
             }
         }
 
     }
+    clearStateData = () => {
+        let { resPrice, resPayment, resDish } = this.props.allRequired
+
+        this.setState({
+            name: '',
+            description: '',
+            action: CRUD_ACTIONS.CREATE,
+            previewImgUrl: '',
+            limitOder: '',
+            selectedPrice: resPrice && resPrice.length > 0 ? resPrice[0].keyMap : '',
+            selectedTypeDish: resDish && resDish.length > 0 ? resDish[0].keyMap : '',
+        })
+    };
     checkValidate = () => {
         let arr = ['description', 'name', 'avatar', 'selectedPrice', 'selectedTypeDish'];
         for (let i = 0; i < arr.length; i++) {
@@ -138,7 +143,6 @@ class ManageListDrink extends Component {
     handleSaveContent = async () => {
         this.checkValidate();
         let { checkData, action } = this.state;
-        console.log('check state data form client', this.state)
         if (checkData === true) {
 
             if (action === CRUD_ACTIONS.CREATE) {
@@ -157,7 +161,7 @@ class ManageListDrink extends Component {
 
                 })
 
-                this.props.fetchRequiredAllList()
+                this.clearStateData()
 
             }
             if (action === CRUD_ACTIONS.EDIT) {
@@ -175,7 +179,7 @@ class ManageListDrink extends Component {
 
 
                 })
-                this.props.fetchRequiredAllList()
+                this.props.clearStateData()
 
 
             }
@@ -200,8 +204,6 @@ class ManageListDrink extends Component {
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
-        }, () => {
-            console.log('check copy state', this.state)
         })
     };
     buildDataInputSelect = (inputData, type) => {

@@ -177,6 +177,7 @@ class PaymentModel extends Component {
         if (res && res.errorCode === 0) {
 
             toast.success("Creat Bill Successfully")
+            this.props.reLoadTotalPrice(true)
             this.setState({ isShowLoading: false })
 
 

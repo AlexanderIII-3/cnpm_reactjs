@@ -32,6 +32,7 @@ class CartDrink extends Component {
 
             this.setState({
                 listOder: this.state.listOder
+
             });
             if (this.state.totalPrice === 0) {
                 let data = this.caculationTotalPrice(this.state.listOder)
@@ -321,6 +322,13 @@ class CartDrink extends Component {
         let dataImage = new Buffer.from(image, 'base64').toString('binary')
         return dataImage;
     };
+    reLoadTotalPrice = (status) => {
+        if (status === true) {
+            this.setState({
+                totalPrice: 0
+            })
+        }
+    }
     render() {
         let { allDays, listOder, currentDate, totalPrice } = this.state;
         console.log('check list oder', listOder)
@@ -591,6 +599,7 @@ class CartDrink extends Component {
 
                 </div>
                 <PaymentModal
+                    reLoadTotalPrice={this.reLoadTotalPrice}
                     isOpenModal={this.state.isOpenModal}
                     isCloseModal={this.isCloseModal}
                     listOder={this.state.listOder}
