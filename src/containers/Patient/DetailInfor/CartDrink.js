@@ -331,7 +331,7 @@ class CartDrink extends Component {
     }
     render() {
         let { allDays, listOder, currentDate, totalPrice } = this.state;
-        console.log('check list oder', listOder)
+        console.log('check list order', listOder)
 
         //date font
         let date = moment(currentDate).format('MM/DD/YYYY');
@@ -340,8 +340,8 @@ class CartDrink extends Component {
                 <HomeHeader />
                 <div class="container">
                     <div class="row">
-                        <div className=' col-xl-8 oder-days'>
-                            <div>Danh sách oder theo ngày:</div>
+                        <div className=' col-xl-8 order-days'>
+                            <div>Danh sách order theo ngày:</div>
                             <div>
                                 <select onChange={(event) => this.handleOnchangeSelect(event)}>
                                     {allDays && allDays.length > 0 &&
@@ -503,7 +503,7 @@ class CartDrink extends Component {
                                             </div>
                                             :
                                             <div className="text-sm-end mt-2 mt-sm-0">
-                                                <div className='infomation'>Hiện không có oder nào!</div>
+                                                <div className='infomation'>Hiện không có order nào!</div>
                                                 <i className="mdi mdi-cart-outline me-1"></i>
                                                 <button
 
@@ -560,7 +560,7 @@ class CartDrink extends Component {
                                                                         thousandSeparator={true}
                                                                         suffix={' VNĐ'} />
                                                                     :
-                                                                    'Vui lòng thêm oder'
+                                                                    'Vui lòng thêm order'
 
                                                             }
 

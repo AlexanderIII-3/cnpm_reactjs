@@ -142,21 +142,24 @@ class Bill extends Component {
 
 
 
-    setPaymentMethod = (pyamentMethod) => {
+    setPaymentMethod = (paymentMethod) => {
+        console.log('Check payment data:', paymentMethod);
         let result = [];
 
-        if (pyamentMethod && pyamentMethod.length > 0) {
-            pyamentMethod.map((item, index) => {
-                let object = {}
+        if (paymentMethod && paymentMethod.length > 0) {
+            paymentMethod.forEach((item) => {
+                console.log('Check payment method:', item);
+                let object = {};
 
-                object.lable = item.paymentData.valueEn
-                object.value = item.payment
-                result.push(object)
-            })
-            return result;
+                // Kiểm tra nếu paymentData tồn tại và có giá trị
+                object.label = item.paymentData ? item.paymentData.valueEn : 'Unknown'; // Gán 'Unknown' nếu paymentData là null
+                object.value = item.payment;
 
+                result.push(object);
+            });
         }
 
+        return result;
     };
 
 
@@ -272,7 +275,6 @@ class Bill extends Component {
 
 
 
-
         return (
             <>
                 <HomeHeader />
@@ -376,6 +378,7 @@ class Bill extends Component {
                                     {paymentMethod && paymentMethod.value === 'PAY1' &&
                                         <div className='price-child'>
                                             <strong>
+                                                {console.log('check the nee heheeh', paymentMethod.label)}
                                                 Phương thức thanh toán:  <span>{paymentMethod ? paymentMethod.lable : ''}</span>
                                             </strong>
                                         </div>
@@ -384,7 +387,8 @@ class Bill extends Component {
                                     {paymentMethod && paymentMethod.value === "PAY2" &&
                                         <div className='price-child'>
                                             <strong>
-                                                Phương thức thanh toán:  <span>{paymentMethod ? paymentMethod.lable : ''}</span>
+
+                                                Phương thức thanh toán:  <span>{paymentMethod.label}</span>
                                             </strong>
                                             <div className='image-QR'></div>
 
@@ -463,6 +467,7 @@ const mapStateToProps = state => {
     return {
 
         language: state.app.language,
+        paymentType: state.admin.allRequiredDoctorInfor,
 
 
 

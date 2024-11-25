@@ -237,7 +237,7 @@ class UserRedux extends Component {
 
                                             {/* { console.log('check index', index) } */ }
                                             return (
-                                                <option key={index} value={item.keyMap}> {language === LANGUAGES.VI ? item.valueVI : item.valueEn}</option>
+                                                <option key={index} value={item.keyMap}> {language === LANGUAGES.VI ? item.valueEn : item.valueEn}</option>
 
 
                                             )

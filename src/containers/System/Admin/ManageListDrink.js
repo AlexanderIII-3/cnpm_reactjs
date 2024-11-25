@@ -19,7 +19,7 @@ class ManageListDrink extends Component {
         this.state = {
             //save to markdown table
             name: '',
-            limitOder: '',
+            limitOrder: '',
             previewImgUrl: '',
             avatar: '',
             action: CRUD_ACTIONS.CREATE,
@@ -83,14 +83,14 @@ class ManageListDrink extends Component {
 
     }
     clearStateData = () => {
-        let { resPrice, resPayment, resDish } = this.props.allRequired
+        let { resPrice, resDish } = this.props.allRequired
 
         this.setState({
             name: '',
             description: '',
             action: CRUD_ACTIONS.CREATE,
             previewImgUrl: '',
-            limitOder: '',
+            limitOrder: '',
             selectedPrice: resPrice && resPrice.length > 0 ? resPrice[0].keyMap : '',
             selectedTypeDish: resDish && resDish.length > 0 ? resDish[0].keyMap : '',
         })
@@ -153,7 +153,7 @@ class ManageListDrink extends Component {
                     description: this.state.description,
                     name: this.state.name,
                     image: this.state.avatar,
-                    limitOder: this.state.limitOder,
+                    limitOrder: this.state.limitOrder,
 
                     selectedPrice: this.state.selectedPrice,
                     selectedTypeDish: this.state.selectedTypeDish,
@@ -171,6 +171,7 @@ class ManageListDrink extends Component {
                     description: this.state.description,
                     name: this.state.name,
                     image: this.state.avatar,
+                    limitOrder: this.state.limitOrder,
 
 
                     selectedPrice: this.state.selectedPrice,
@@ -179,7 +180,7 @@ class ManageListDrink extends Component {
 
 
                 })
-                this.props.clearStateData()
+                this.clearStateData()
 
 
             }
@@ -207,13 +208,14 @@ class ManageListDrink extends Component {
         })
     };
     buildDataInputSelect = (inputData, type) => {
+
         let result = [];
         if (inputData && inputData.length > 0) {
 
             if (type === "PRICE") {
                 inputData.map((item, index) => {
                     let object = {};
-                    let labelVi = `${item.valueVI} VND`;
+                    let labelVi = `${item.valueEn} VND`;
                     object.label = labelVi;
 
                     object.value = item.keyMap;
@@ -223,7 +225,7 @@ class ManageListDrink extends Component {
             if (type === "PAYMENT") {
                 inputData.map((item, index) => {
                     let object = {};
-                    let labelVi = item.valueVI;
+                    let labelVi = item.valueEn;
                     object.label = labelVi;
                     object.value = item.keyMap;
                     result.push(object)
@@ -232,7 +234,7 @@ class ManageListDrink extends Component {
             if (type === "DISH") {
                 inputData.map((item, index) => {
                     let object = {};
-                    let labelVi = item.valueVI;
+                    let labelVi = item.valueEn;
                     object.label = labelVi;
                     object.value = item.keyMap;
                     result.push(object)
@@ -275,6 +277,8 @@ class ManageListDrink extends Component {
         console.log('check list all required ', this.props.ListDrink)
 
         let data = this.props.allRequired;
+        console.log('check list all required ', data)
+
         return (
             <>
                 <div className='manage-doctor-container'>
@@ -391,8 +395,8 @@ class ManageListDrink extends Component {
                         <div className='col-2 form-group'>
                             <label>Số lượng:</label>
                             <input
-                                onChange={(event) => this.handleChangeText(event, 'limitOder')}
-                                value={this.state.limitOder}
+                                onChange={(event) => this.handleChangeText(event, 'limitOrder')}
+                                value={this.state.limitOrder}
                                 className='form-control'></input>
                         </div>
 

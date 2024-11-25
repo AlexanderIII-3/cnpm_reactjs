@@ -64,7 +64,7 @@ class TableManageUser extends Component {
         console.log('check login', this.props.isLoggedIn)
         return (
             <React.Fragment>
-                hlooo
+
 
 
                 <div className="users-table mt-3  mx-4 mb-5"  >
@@ -90,13 +90,6 @@ class TableManageUser extends Component {
                                         <td>  <button className='btn-edit' onClick={() => { this.handleEditUser(item) }} ><i className='fas fa-pencil-alt'></i>
                                         </button>
                                             <button onClick={() => { this.handleDelete(item) }} className='btn-delete'><i className='fas fa-trash-alt' ></i>
-                                            </button>
-                                            <button onClick={() => { this.handleDetail(item) }}
-                                                className='btn-detail'>
-
-                                                <i className='fas fa-address-card'></i>
-
-
                                             </button>
 
                                         </td>
